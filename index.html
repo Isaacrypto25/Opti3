@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPTI3 · Painel Operacional</title>
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="icon" href="assets/img/obramax-mark.png">
+<script src="assets/js/config.js"></script>
+</head>
+<body>
+<div class="scanlines"></div>
+
+<header class="topbar">
+  <a href="index.html" class="topbar__mark"><img src="assets/img/obramax-logo.png" alt="Obramax" class="topbar__logo"> OPTI3</a>
+  <span class="topbar__crumbs">Painel operacional</span>
+  <div class="topbar__spacer"></div>
+  <span class="topbar__meta" id="relogio"></span>
+</header>
+
+<main class="page">
+  <section style="margin-bottom:var(--sp-6);">
+    <h1 style="font-size:34px;">Ferramentas</h1>
+    <p class="u-muted" style="max-width:640px; margin-top:8px;">
+      Selecione uma ferramenta para começar. Módulos com cadeado ainda estão em desenvolvimento.
+    </p>
+  </section>
+
+  <section class="tool-grid" id="grid-ferramentas"></section>
+</main>
+
+<script>
+  function atualizarRelogio() {
+    const el = document.getElementById("relogio");
+    const agora = new Date();
+    el.textContent = agora.toLocaleDateString("pt-BR") + "  " + agora.toLocaleTimeString("pt-BR");
+  }
+  atualizarRelogio();
+  setInterval(atualizarRelogio, 1000);
+
+  function iconeCadeado() {
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+  }
+
+  const grid = document.getElementById("grid-ferramentas");
+  window.TITAN_CONFIG.FERRAMENTAS.forEach((f) => {
+    const bloqueado = f.status === "bloqueado";
+    const card = document.createElement(bloqueado ? "div" : "a");
+    if (!bloqueado) card.href = f.href;
+    card.className = "tool-card" + (bloqueado ? " tool-card--locked" : "");
+    card.innerHTML = `
+      ${bloqueado ? `<span class="lock-pill">${iconeCadeado()} Disponível em breve</span>` : ""}
+      <div class="tool-card__icon">${f.icone}</div>
+      <div class="tool-card__title">${f.nome}</div>
+      <div class="tool-card__desc">${f.descricao}</div>
+    `;
+    grid.appendChild(card);
+  });
+</script>
+</body>
+</html>

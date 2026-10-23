@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prioridade de Reabastecimento · OPTI3</title>
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="icon" href="../../assets/img/obramax-mark.png">
+<style>
+  /* específico do relatório */
+  .rel-header{ display:flex; justify-content:space-between; align-items:flex-start; gap:var(--sp-5); flex-wrap:wrap; margin-bottom:var(--sp-5); }
+  .rel-header h1{ font-size:30px; }
+  .rel-subtitulo{ color:var(--ink-1); font-size:13px; max-width:760px; margin-top:6px; line-height:1.6; }
+  .rel-actions{ display:flex; gap:var(--sp-2); }
+  .cat-section{ margin-top:var(--sp-7); }
+  .cat-section__head{ display:flex; align-items:baseline; gap:var(--sp-3); margin-bottom:4px; }
+  .cat-section__titulo{ font-size:20px; }
+  .cat-section__sub{ color:var(--ink-1); font-size:12.5px; margin-bottom:var(--sp-3); font-style:italic; }
+  .empty-note{ color:var(--ink-2); font-size:13px; padding:var(--sp-3) 0; }
+  .ajustado{ box-shadow: inset 0 0 0 1px var(--amber-0); }
+  #no-data{ display:none; }
+</style>
+</head>
+<body>
+<div class="scanlines"></div>
+
+<header class="topbar">
+  <a href="../../index.html" class="topbar__mark"><img src="../../assets/img/obramax-logo.png" alt="Obramax" class="topbar__logo"> OPTI3</a>
+  <span class="topbar__crumbs"><a href="../../index.html">Ferramentas</a> / <a href="upload.html">Planejamento de Recebimento</a> / Relatório</span>
+  <div class="topbar__spacer"></div>
+  <span class="topbar__meta" id="gerado-em"></span>
+</header>
+
+<main class="page">
+
+  <div id="no-data" class="card card--pad" style="text-align:center;">
+    <p class="u-muted">Nenhum cruzamento carregado nesta sessão.</p>
+    <a href="upload.html" class="btn btn--primary" style="margin-top:12px;">Carregar fontes</a>
+  </div>
+
+  <div id="conteudo">
+    <div class="rel-header">
+      <div>
+        <h1>Prioridade de Reabastecimento — Operação de Hoje</h1>
+        <p class="rel-subtitulo" id="rel-subtitulo"></p>
+      </div>
+      <div class="rel-actions no-print">
+        <button class="btn btn--ghost" id="btn-novo">Novo cruzamento</button>
+        <button class="btn btn--primary" id="btn-imprimir">Gerar / Imprimir relatório</button>
+      </div>
+    </div>
+
+    <section class="no-print" style="margin-bottom:var(--sp-5);">
+      <div class="section-tabs" id="section-tabs"></div>
+    </section>
+
+    <section class="stat-row" id="stat-row"></section>
+
+    <section class="card card--pad" style="margin-top:var(--sp-5);">
+      <h3 style="font-size:16px; margin-bottom:var(--sp-3);">Endereçamento no AEL — visão rápida</h3>
+      <div id="ael-quick" class="stat-row"></div>
+    </section>
+
+    <p class="rel-subtitulo" style="margin-top:var(--sp-5);">
+      Como usar: comece pela seção de ruptura e desça na ordem (a prioridade dentro de cada seção já está
+      ordenada pela cobertura mais curta primeiro). A coluna "Dias Cobert." mostra quantos dias o estoque
+      do picking aguenta no ritmo de venda real — não o percentual do lote que chega hoje. Os valores de
+      "Estoque Picking" são editáveis: ajuste a contagem e a categoria é recalculada na hora. A seção
+      "Sem giro" reúne itens sem venda registrada nos últimos 30 dias — revisar manualmente.
+    </p>
+
+    <div id="categorias-container"></div>
+
+    <section class="cat-section">
+      <div class="cat-section__head">
+        <h2 class="cat-section__titulo">Candidatos a Consolidação no AEL</h2>
+      </div>
+      <p class="cat-section__sub">Produtos já espalhados em 2 ou mais posições no AEL — aproveite a subida de hoje para reunir tudo em um único endereço.</p>
+      <div id="consolidacao-container"></div>
+    </section>
+  </div>
+</main>
+
+<script src="../../assets/js/vendor/xlsx.full.min.js"></script>
+<script src="../../assets/js/config.js"></script>
+<script src="../../assets/js/logic.js"></script>
+<script src="../../assets/js/format.js"></script>
+<script src="../../assets/js/state.js"></script>
+<script src="relatorio.js"></script>
+</body>
+</html>

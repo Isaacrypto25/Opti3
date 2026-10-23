@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planejamento de Recebimento · Carregar fontes · OPTI3</title>
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/components.css">
+<link rel="icon" href="../../assets/img/obramax-mark.png">
+</head>
+<body>
+<div class="scanlines"></div>
+
+<header class="topbar">
+  <a href="../../index.html" class="topbar__mark"><img src="../../assets/img/obramax-logo.png" alt="Obramax" class="topbar__logo"> OPTI3</a>
+  <span class="topbar__crumbs"><a href="../../index.html">Ferramentas</a> / Planejamento de Recebimento</span>
+</header>
+
+<main class="page">
+  <section style="margin-bottom:var(--sp-6);">
+    <h1 style="font-size:30px;">Carregar fontes de dados</h1>
+    <p class="u-muted" style="max-width:720px; margin-top:8px;">
+      Carregue os 3 arquivos abaixo. Assim que os três estiverem prontos, o cruzamento
+      (estoque de picking × agendamento de entregas × giro real de venda) fica disponível
+      automaticamente — sem precisar rodar nada por fora.
+    </p>
+  </section>
+
+  <section class="upload-grid" id="grid-uploads"></section>
+
+  <section id="area-erro" style="margin-top:var(--sp-5); display:none;"></section>
+
+  <section style="margin-top:var(--sp-6); display:flex; align-items:center; gap:var(--sp-4);">
+    <button class="btn btn--primary" id="btn-processar" disabled>Processar e ver relatório</button>
+    <span class="u-faint" id="status-processamento"></span>
+  </section>
+</main>
+
+<script src="../../assets/js/vendor/xlsx.full.min.js"></script>
+<script src="../../assets/js/config.js"></script>
+<script src="../../assets/js/parsers.js"></script>
+<script src="../../assets/js/logic.js"></script>
+<script src="../../assets/js/state.js"></script>
+<script src="upload.js"></script>
+</body>
+</html>

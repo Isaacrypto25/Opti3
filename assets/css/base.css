@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+*, *::before, *::after{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  background:var(--bg-0);
+  color:var(--ink-0);
+  font-family:var(--font-body);
+  font-size:14px;
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:600;
+  letter-spacing:.01em;
+  margin:0;
+  color:var(--navy-0);
+}
+a{ color:inherit; }
+button{ font-family:inherit; }
+::selection{ background:var(--orange-tint); color:var(--navy-0); }
+
+/* foco visível, sempre */
+:focus-visible{
+  outline:2px solid var(--orange-0);
+  outline-offset:2px;
+  border-radius:var(--radius-s);
+}
+
+/* faixa superior fixa, comum a todas as páginas — navy institucional Obramax */
+.topbar{
+  position:sticky; top:0; z-index:40;
+  display:flex; align-items:center; gap:var(--sp-4);
+  padding:var(--sp-3) var(--sp-5);
+  background:linear-gradient(180deg, var(--navy-0), var(--navy-1));
+  border-bottom:3px solid var(--orange-0);
+}
+.topbar__mark{
+  display:flex; align-items:center; gap:var(--sp-3);
+  font-family:var(--font-display); font-weight:700; font-size:20px;
+  letter-spacing:.04em; color:#fff; text-decoration:none;
+}
+.topbar__mark img.topbar__logo{
+  height:28px; width:auto; display:block;
+}
+.topbar__mark .dot{ width:9px; height:9px; border-radius:50%; background:var(--orange-0);
+  box-shadow:0 0 12px 2px rgba(239,127,0,.55); }
+.topbar__crumbs{ color:rgba(255,255,255,.7); font-size:13px; }
+.topbar__crumbs a{ color:rgba(255,255,255,.85); text-decoration:none; }
+.topbar__crumbs a:hover{ color:var(--orange-0); }
+.topbar__spacer{ flex:1; }
+.topbar__meta{ color:rgba(255,255,255,.6); font-size:12px; font-family:var(--font-mono); }
+
+.page{
+  max-width:1280px;
+  margin:0 auto;
+  padding:var(--sp-6) var(--sp-5) var(--sp-8);
+  position:relative;
+}
+
+/* leve decoração de canto, ecoando o triângulo laranja do template Obramax */
+.scanlines{
+  pointer-events:none;
+  position:fixed; top:0; right:0; z-index:0; width:220px; height:220px; opacity:.5;
+  background:
+    linear-gradient(135deg, transparent 50%, var(--orange-0) 50.6%, var(--orange-0) 54%, transparent 54.6%);
+  clip-path: polygon(100% 0, 100% 45%, 55% 0);
+}
+
+/* utilidades */
+.u-mono{ font-family:var(--font-mono); }
+.u-muted{ color:var(--ink-1); }
+.u-faint{ color:var(--ink-2); }
+.u-flex{ display:flex; }
+.u-gap-2{ gap:var(--sp-2); } .u-gap-3{ gap:var(--sp-3); } .u-gap-4{ gap:var(--sp-4); }
+.u-center{ align-items:center; }
+.u-between{ justify-content:space-between; }
+.u-wrap{ flex-wrap:wrap; }
+.visually-hidden{ position:absolute; width:1px;height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+
+/* barra de seção estilo Obramax (navy sólido, texto branco, ponta em bisel) */
+.section-bar{
+  display:inline-block; background:var(--navy-0); color:#fff;
+  font-family:var(--font-display); font-weight:600; font-size:16px;
+  padding:8px 20px; border-radius:0 var(--radius-s) var(--radius-s) 0;
+  border-left:4px solid var(--orange-0);
+}
+
+@media print{
+  .topbar, .no-print{ display:none !important; }
+  body{ background:#fff; color:#111; }
+  .page{ max-width:none; padding:0; }
+}

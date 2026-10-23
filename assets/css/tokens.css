@@ -1,0 +1,66 @@
+/* ==========================================================================
+   OPTI3 · Design Tokens
+   Paleta: identidade Obramax — navy institucional + laranja de destaque.
+   ========================================================================== */
+:root{
+  /* --- superfícies (tema claro, corporativo) --- */
+  --bg-0: #eef1f6;      /* fundo geral */
+  --bg-1: #ffffff;      /* cards */
+  --bg-2: #f4f6fa;      /* cards elevados / hover */
+  --bg-3: #e9edf3;      /* inputs, trilhos */
+  --line: #dde3ec;      /* bordas sutis */
+  --line-strong: #c6d0dd;
+
+  /* --- texto --- */
+  --ink-0: #0a1f3d;     /* texto principal (navy escuro) */
+  --ink-1: #4d5c72;     /* texto secundário */
+  --ink-2: #8996a8;     /* texto terciário / placeholder */
+
+  /* --- marca Obramax --- */
+  --navy-0: #002a5b;    /* navy institucional */
+  --navy-1: #001b3d;    /* navy escuro (hover / gradiente) */
+  --navy-tint: #e6edf6; /* navy bem clarinho, para fundos suaves */
+
+  --orange-0: #ef7f00;  /* laranja de marca (acento principal) */
+  --orange-1: #d97000;  /* laranja hover / pressed */
+  --orange-tint: #fdecd6;
+
+  /* aliases usados pelos componentes existentes (acento operacional) */
+  --amber-0: var(--orange-0);
+  --amber-1: var(--orange-1);
+  --amber-dim: var(--orange-tint);
+
+  /* --- categorias (herdadas do relatório original, ajustadas ao tema claro) --- */
+  --cat-ruptura: #c62d2d;
+  --cat-critico: #d9640c;
+  --cat-moderado: #b3860a;
+  --cat-armazenar: #1f8a57;
+  --cat-semgiro: #66707c;
+
+  --cat-ruptura-bg: #fbe7e6;
+  --cat-critico-bg: #fdedd9;
+  --cat-moderado-bg: #faf1d6;
+  --cat-armazenar-bg: #e2f5eb;
+  --cat-semgiro-bg: #eaedf1;
+
+  /* --- estado --- */
+  --ok: #1f8a57;
+  --warn: #d9640c;
+  --danger: #c62d2d;
+  --locked: #97a1af;
+
+  /* --- tipografia --- */
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* --- escala --- */
+  --radius-s: 4px;
+  --radius-m: 8px;
+  --radius-l: 14px;
+  --shadow-card: 0 1px 2px rgba(10,31,61,.06), 0 8px 24px -12px rgba(10,31,61,.14);
+  --shadow-pop: 0 20px 60px -20px rgba(10,31,61,.28);
+
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px;
+}
